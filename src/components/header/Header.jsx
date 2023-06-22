@@ -2,8 +2,19 @@ import React, { useState } from 'react'
 import './header.css'
 
 const Header = () => {
+    /* ====== Change Background Header ====== */
+    window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        if (this.scrollY >= 80) {
+            header.classList.add("scroll-header");
+        }
+        else {
+            header.classList.remove("scroll-header")
+        }
+    })
     /* ====== Toggle Menu ====== */
     const [Toggle, showMenu] = useState(false);
+    const [activeNav, setActiveNav] = useState("#home");
 
     return (
         <header className="header">
@@ -16,27 +27,27 @@ const Header = () => {
                     "nav--menu"}>
                     <ul className="nav--list grid">
                         <li className="nav--item">
-                            <a href="#home" className="nav--link">
+                            <a href="#home" onClick={() => setActiveNav('#home')} className={activeNav === "#home" ? "nav--link active--link" : "nav--link"}>
                                 <i className="uil uil-estate nav--icon"></i> Inicio
                             </a>
                         </li>
                         <li className="nav--item">
-                            <a href="#about" className="nav--link">
+                            <a href="#about" onClick={() => setActiveNav('#about')} className={activeNav === "#about" ? "nav--link active--link" : "nav--link"}>
                                 <i className="uil uil-user nav--icon"></i> Sobre mí
                             </a>
                         </li>
                         <li className="nav--item">
-                            <a href="#skilss" className="nav--link">
+                            <a href="#skills" onClick={() => setActiveNav('#skills')} className={activeNav === "#skills" ? "nav--link active--link" : "nav--link"}>
                                 <i className="uil uil-file nav--icon"></i> Habilidades
                             </a>
                         </li>
                         <li className="nav--item">
-                            <a href="#services" className="nav--link">
+                            <a href="#services" onClick={() => setActiveNav('#services')} className={activeNav === "#services" ? "nav--link active--link" : "nav--link"}>
                                 <i className="uil uil-briefcase-alt nav--icon"></i> Servicios
                             </a>
                         </li>
                         <li className="nav--item">
-                            <a href="#portfolio" className="nav--link">
+                            <a href="#portfolio" onClick={() => setActiveNav('#portfolio')} className={activeNav === "#portfolio" ? "nav--link active--link" : "nav--link"}>
                                 <i className="uil uil-scenery nav--icon"></i> Portfolio
                             </a>
                         </li>
